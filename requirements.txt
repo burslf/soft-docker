@@ -1,0 +1,5 @@
+alembic	== 1.8.1
+psycopg2-binary	== 2.9.3
+requests == 2.28.1
+SQLAlchemy == 1.4.40
+fastapi == 0.85.0
