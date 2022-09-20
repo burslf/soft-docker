@@ -13,7 +13,7 @@ router = APIRouter(
 )
 
 
-@router.post("")
+@router.post("", response_model=schemas.User)
 def create_user(
     user: schemas.User,
 ) -> schemas.User:
@@ -30,7 +30,7 @@ def create_user(
     return new_user
 
 
-@router.get("")
+@router.get("", response_model=List[schemas.User])
 def get_users() -> List[schemas.User]:
     inner_session = get_session(connection_type="readwrite")
 
