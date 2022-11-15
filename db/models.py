@@ -84,12 +84,13 @@ class Salon(Base):
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
     updated_at = Column(DateTime(timezone=True), onupdate=datetime.utcnow)
+    employee_id = Column(Integer, ForeignKey("employee.id"), nullable=False)
     name = Column(String(200), nullable=False)
+    phone_number = Column(String(200), nullable=False)
     description = Column(String(500), nullable=False)
     address_id = Column(Integer, ForeignKey("address.id"), nullable=False)
     opening_hours = Column(JSON, nullable=False)
     type_id = Column(Integer, ForeignKey("type.id"), nullable=False)
-    phone_number = Column(String(200), nullable=False)
 
     __table_args__ = (
         UniqueConstraint(

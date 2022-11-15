@@ -1,7 +1,8 @@
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
-from api.routers.routes import router
+from fastapi import APIRouter
+from api.routes import users, clients
 from helpers.load_env import load_environment_variables
 
 load_environment_variables(env="develop", parent_level=0)
@@ -17,6 +18,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+router = APIRouter()
+router.include_router(users.router)
+router.include_router(clients.router)
 
 app.include_router(router=router)
 

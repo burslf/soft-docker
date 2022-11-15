@@ -1,3 +1,4 @@
+from typing import List, Tuple
 from helpers.decorators.fname import fname
 from helpers.custom_log import get_logger
 from db.models import Client, User
@@ -21,7 +22,7 @@ def session_add_new_client(outer_session: Session, user_id: str, phone_number: s
 
 
 @fname
-def session_get_clients(outer_session: Session) -> [Client]:
+def session_get_clients(outer_session: Session) -> List[Client]:
     conditional_fields = [outer_session]
 
     if None in conditional_fields:
@@ -33,7 +34,7 @@ def session_get_clients(outer_session: Session) -> [Client]:
 
 
 @fname
-def session_get_client_by_email(outer_session: Session, email: str) -> (User, Client):
+def session_get_client_by_email(outer_session: Session, email: str) -> Tuple[User, Client]:
     conditional_fields = [outer_session]
 
     if None in conditional_fields:
